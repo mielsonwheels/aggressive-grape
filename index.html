@@ -5,14 +5,56 @@
     <title>Aggressive Grape</title>
 </head>
 <body>
-<h1 style="text-align: center; font-family: sans-serif">Aggressive Grape</h1>
-<div style="text-align: center">
-    <img src="grap1.jpg" alt="Grape 1"/>
-    <img src="grap2.jpg" alt="Grape 2"/>
-    <img src="grap3.jpg" alt="Grape 3"/>
-    <img src="grap4.jpg" alt="Grape 4"/>
-    <img src="grap5.jpg" alt="Grape 5"/>
-    <img src="grap6.jpg" alt="Grape 6"/>
+<h1 class="comic-header">Aggressive Grape</h1>
+<div class="comic-box">
+    <img src="grap1.jpg" alt="Grape 1" class="comic-pane shown"/>
+    <img src="grap2.jpg" alt="Grape 2" class="comic-pane hidden"/>
+    <img src="grap3.jpg" alt="Grape 3" class="comic-pane hidden"/>
+    <img src="grap4.jpg" alt="Grape 4" class="comic-pane hidden"/>
+    <img src="grap5.jpg" alt="Grape 5" class="comic-pane hidden"/>
+    <img src="grap6.jpg" alt="Grape 6" class="comic-pane hidden"/>
 </div>
 </body>
+<style>
+    .comic-header {
+        height: 20%;
+        text-align: center;
+        font-family: sans-serif;
+    }
+    .comic-box {
+        height: 75%;
+        width: 100%;
+        text-align: center;
+        align-content: space-around;
+        align-self: center;
+    }
+    .comic-pane {
+        align-self: center;
+        height: 50%;
+        width: 50%;
+    }
+    .shown {
+        display: block;
+        padding: 50px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+<script type="application/javascript">
+    (function () {
+        let currentIndex = 0;
+        function nextSlide() {
+            currentIndex++;
+            let panes = document.querySelectorAll(".comic-pane");
+            panes.forEach(pane => pane.classList.add("hidden"))
+            if(currentIndex >= panes.length){
+                currentIndex = 0;
+            }
+            panes[currentIndex].classList.add("shown")
+            panes[currentIndex].classList.remove("hidden")
+        }
+        setInterval(nextSlide, 3000)
+    })()
+</script>
 </html>
